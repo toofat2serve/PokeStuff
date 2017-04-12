@@ -1,21 +1,23 @@
 /*eslint-env jquery */
 function initDex() {
 	initPickers();
-	$("input").attr("type", "number").on("click", attachNumPad());
+	$(".inputSpan").on("click", attachNumPad);
 }
 
 function attachNumPad(event) {
-	$("label").each(function() {
-		if ($.attr("for") === event.target.id) {
-			console.log(p);
-			p.after(makeNumpad());
-		}
-	});
+	if (!($("table").hasClass("keypad"))) {
+		var tid = event.target.id;
+		$("#" + tid).after(makeNumpad(tid));
+	} else { 
+		killNumpad();
+	}
 }
 
-
-
-function makeNumpad() {
+function killNumpad() {
+	$("table.keypad").remove();
+}
+function makeNumpad(id) {
+	var numCols = 3;
 	var digits = "1234567890AB";
 	var digit = digits.split("");
 	var t = $("<table></table>").prop("class", "keypad");
@@ -26,7 +28,7 @@ function makeNumpad() {
 		var td = $("<td></td>");
 
 		function makeKey(disp, val) {
-			var a = $('<a href="#">' + disp + '</a>').addClass("keybutton");
+			var a = $('<span>' + disp + '</span>').addClass("keybutton");
 			a.prop("value", val);
 			return a;
 		}
@@ -39,9 +41,10 @@ function makeNumpad() {
 		}
 		tr.append(td);
 		var col = $("table.keypad > tbody > tr:last-child > td").length;
-		if (col === 3) {
+		if (col === numCols) {
 			t.append("<tr></tr>");
 		}
 	});
+	t.append('<tr><td colspan="' + numCols + '">' + id +'</td></tr>');
 	return t;
 }

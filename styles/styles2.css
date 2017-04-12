@@ -1,7 +1,17 @@
+.inputSpan {
+  min-width: 5em;
+  background-color: blue;
+  border: 1px solid black;
+  height: 2em;
+  margin: 0 3em;
+}
+
+
 .keypad {
 	background-color: #ee1515;
 	border-radius: 5px;
 	padding: 3px;
+	position: absolute;
 }
 
 .keybutton:hover {

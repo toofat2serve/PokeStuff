@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="styles/styles2.css">
 	<base target="_blank">
 	<script src="bin/jquery/jquery.2.1.4.min.js"></script>
-	<script src="bin/jquerymobile/jquery.mobile-1.4.5.js"></script>
-
+	<!-- <script src="bin/jquerymobile/jquery.mobile-1.4.5.js"></script>
+-->
 	<script src="bin/data.js"></script>
 	<script src="bin/util.js"></script>
 	<script src="bin/pokedex.js"></script>
@@ -18,16 +18,16 @@
 
 <body onload="initDex()">
 	<div class="content">
+	  <script>
+		
+	  </script>
 		<table id="pokepicker">
 		</table>
 		<table id="azpicker">
 		</table>
 		<span id="nameselect" onclick="jqazPick()"><h1>CLICK</h1></span>
-		<form>
-			<label for="num">Number<input type="number" id="num" size="4"></label>
-			<label for="nom">Number<input type="number" id="nom" size="4"></label>
-			<label for="nam">Number<input type="number" id="nam" size="4"></label>
-		</form>
+	  <span class="inputSpan" id="cp" value="0">CP</span>
+	  <span class="inputSpan" id="hp" value="0">HP</span>
 	</div>
 </body>
 </html>
