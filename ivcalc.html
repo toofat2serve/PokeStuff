@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<base target="_blank">
+	<link rel="stylesheet" href="styles/styles.css">
+	<title>IV Calculator</title>
+	<script src="bin/jquery/jquery-3.2.0.js"></script>
+	<script src="bin/jquerymobile/jquery.mobile-1.4.5.js"></script>
+
+	<script src="bin/data.js"></script>
+	<script src="bin/util.js"></script>
+</head>
+
+<body onload="initializeCalc()">
+	<!-- --------------Content---------------- -->
+
+	<div id="content">
+		<div class="wrapper">
+			<table id="pokepicker">
+			</table>
+		</div>
+		<div class="wrapper">
+			<table id="azpicker">
+			</table>
+		</div>
+		<div class="wrapper">
+			<table id="calc">
+				<form target="_self" name="ivcalc" action="bin/ivcalc.js" id="ivcalc" method="post">
+					<tr>
+						<th colspan="4">Basics</th>
+						<th colspan="4">Trainer</th>
+					</tr>
+					<tr>
+						<th colspan="2">Pokémon</th>
+						<th colspan="2">Powd Up?</th>
+						<th colspan="2">Appraisal</th>
+						<th colspan="2">Stats</th>
+					</tr>
+					<tr>
+						<td colspan="2"><span id="nameselect" onclick="azPick()"></span></td>
+						<td colspan="2"><input type="checkbox" name="pu" id="puv" onchange="holdOn()"></td>
+						<td colspan="2"><select name="appraisal" id="appraisalv" onchange="holdOn()">
+						<option value="0" selected="selected">SELECT</option>	
+						<option value="1">Best</option>
+						<option value="2">Good</option>
+						<option value="3">Fair</option>
+						<option value="4">Crap</option>
+						</select></td>
+						<td colspan="2"><select name="stats" id="statsv" onchange="holdOn()">
+						<option value="0" selected="selected">SELECT</option>	
+						<option value="1">Best</option>
+						<option value="2">Good</option>
+						<option value="3">Fair</option>
+						<option value="4">Crap</option>
+						</select></td>
+
+					</tr>
+					<th>CP</th>
+					<th>HP</th>
+					<th colspan="2">Stardust</th>
+					<th colspan="4">Highest Stat(s)</th>
+					</tr>
+					<tr>
+						<td><input type="number" min="0" max="9999" name="cp" id="cpv" size="3" onchange="holdOn()"></td>
+						<td><input type="number" min="0" max="9999" name="hp" id="hpv" size="3" onchange="holdOn()"></td>
+						<td colspan="2"><span id="dustselect"></span></td>
+						<td colspan="4">
+							<label for="atkhi">ATK
+					<input type="checkbox" name="at" id="atkv" onchange="holdOn()"></label>
+							<label for="defhi">DEF
+					<input type="checkbox" name="df" id="defv" onchange="holdOn()"></label>
+							<label for="stahi">STA
+					<input type="checkbox" name="st" id="stav" onchange="holdOn()"></label>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="4">
+							<input type="button" value="Submit" onclick="submitthis()">
+						</td>
+						<td colspan="4">
+							<input type="button" value="Reset" onclick="formReset()">
+						</td>
+					</tr>
+				</form>
+			</table>
+
+		</div>
+		</table>
+	</div>
+</body>
+</html>
