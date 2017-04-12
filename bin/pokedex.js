@@ -5,11 +5,18 @@ function initDex() {
 }
 
 function attachNumPad(event) {
-	if (!($("table").hasClass("keypad"))) {
-		var tid = event.target.id;
-		$("#" + tid).after(makeNumpad(tid));
-	} else { 
-		killNumpad();
+	try {
+		if (!($("table").hasClass("keypad"))) {
+			var tid = "#" + event.target.id;
+			var np = makeNumpad(tid);
+			var nppos = $.offset(tid);
+			$(tid).after(np));
+			np.offset(nppos.left, nppos.top);
+		} else { 
+			killNumpad();
+		}
+	} catch {
+		alert(err);
 	}
 }
 
