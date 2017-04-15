@@ -1,17 +1,25 @@
 .inputSpan {
-  min-width: 5em;
-  background-color: blue;
-  border: 1px solid black;
-  height: 2em;
-  margin: 0 3em;
+	display: inline-block;
+	box-sizing: border-box;
+	min-width: 6em;
+	background-color: #a9e4f7;
+	border: 1px solid black;
+	height: 1.2em;
+	margin: 0 3em;
+	text-align: center;
+	vertical-align: middle;
+	
 }
 
-
 .keypad {
+	min-width: 6em;
 	background-color: #ee1515;
 	border-radius: 5px;
 	padding: 3px;
 	position: absolute;
+	border: 2px solid black;
+	margin: 3px;
+	box-sizing: border-box;
 }
 
 .keybutton:hover {
@@ -34,7 +42,7 @@
 	font-family: sans-serif;
 	border-radius: 5px;
 	min-width: 1.2em;
-	border: 1px solid black;
+	border: 2px solid black;
 	text-align: center;
 	background: #a9e4f7;
 	background: -moz-radial-gradient(center, ellipse cover, #a9e4f7 0%, #0fb4e7 100%);

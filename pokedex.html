@@ -5,29 +5,49 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="styles/styles2.css">
+<!-- <link rel="stylesheet" href="styles/styles2.css"> -->
+	<link rel="stylesheet" href="bin/jquerymobile/jquery.mobile-1.4.5.min.css">
 	<base target="_blank">
 	<script src="bin/jquery/jquery.2.1.4.min.js"></script>
-	<!-- <script src="bin/jquerymobile/jquery.mobile-1.4.5.js"></script>
--->
+	<script src="bin/jquerymobile/jquery.mobile-1.4.5.js"></script>
 	<script src="bin/data.js"></script>
 	<script src="bin/util.js"></script>
 	<script src="bin/pokedex.js"></script>
+	<script src="bin/component/keypad.js"></script>
 	<title>Pokédex</title>
 </head>
 
 <body onload="initDex()">
-	<div class="content">
-	  <script>
-		
-	  </script>
-		<table id="pokepicker">
-		</table>
-		<table id="azpicker">
-		</table>
-		<span id="nameselect" onclick="jqazPick()"><h1>CLICK</h1></span>
-	  <span class="inputSpan" id="cp" value="0">CP</span>
-	  <span class="inputSpan" id="hp" value="0">HP</span>
+	
+	<div data-role="page" id="pokedex">
+<div data-role="header" data-position="fixed">
+		<h1>Pokedex</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#pokedex" class="ui-btn-active">Pokedex</a></li>
+				<li><a href="#ivcalc">IV</a></li>
+			</ul>
+		</div>
+	</div>
+		<div role="main" class="ui-content">
+
+			<table id="pokepicker">
+			</table>
+			<table id="azpicker">
+			</table>
+			<span id="nameselect" onclick="jqazPick()"><h1>CLICK</h1></span>
+			<span class="inputSpan" id="cp" value="0">CP</span>
+			<span class="inputSpan" id="hp" value="0">HP</span>
+		</div>
+
+
+	</div>
+	<div data-role="page" id="ivcalc">
+		<div role="main" class="ui-content">
+
+		</div>
+
+
 	</div>
 </body>
 </html>

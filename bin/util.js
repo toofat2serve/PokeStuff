@@ -1,33 +1,5 @@
-
 /*eslint-env jquery */
-function jqazPick() {
-	document.body.style.backgroundImage = "none";
-	var abcs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var abc = abcs.split("");
-	var tbl = $("#azpicker");
-	var trow;
-	abc.forEach(function(letter, index) {
-		if (index % 5 === 0) {
-			if (index > 0) {
-				tbl.append(trow);
-			}
-			trow = $("<tr></tr>");
-	}
 
-		var tdiv = $("<td>" + letter + "</td>").prop("id",letter);
-		trow.append(tdiv);
-		if (index === (abc.length - 1)) {
-			tdiv = $("<td></td>");
-			tdiv.colSpan = 4;
-			trow.append(tdiv);
-			tbl.append(trow);
-		}
-	});
-
-	tbl.on("click", ltrPick, false);
-	tbl.css("display", "inline-table");
-
-}
 
 function hexIt(str) {
 	var hex = str;
@@ -315,8 +287,6 @@ function submitthis() {
 
 
 
-
-
 function t_Pokemon(pokeID, pokeName, pokeATT, pokeDEF, pokeSTA, pokeType1, pokeType2, pokeCandyType, eggID, pokeEvoTo, pokeCandyToEvo, pokeDesc) {
 	this.id = pokeID;
 	this.name = pokeName;
@@ -362,9 +332,8 @@ function pokePicked(e) {
 
 function getPokemon(ltr) {
 	var pokedex = loadPokedex();
-
 	var selection = [];
-	var pokePicker = document.getElementById("pokepicker");
+	var pokePicker = $("#pokepicker");
 	for (var pokemon in pokedex) {
 		var pmn = pokedex[pokemon];
 		if (pmn.name.charAt(0) === ltr.charAt(0)) {
@@ -374,11 +343,11 @@ function getPokemon(ltr) {
 	var cols = 4;
 	var divs = [];
 	for (var p in selection) {
-		var tdiv = document.createElement("td");
-		tdiv.id = selection[p].id;
-		var tfig = document.createElement("figure");
-		var tpic = document.createElement("img");
-		tpic.src = imgSRC(selection[p].id);
+		var tdiv = $("<td></td>");
+		tdiv.attr("id", selection[p].id);
+		var tfig = $("<figure></figure>");
+		var tpic = $("<img />");
+		tpic.attr("src", imgSRC(selection[p].id));
 		tpic.class = "pokesprite";
 		var tfc = document.createElement("figcaption");
 		tfc.innerText = "#" + selection[p].id + " " + selection[p].name;
@@ -401,7 +370,7 @@ function getPokemon(ltr) {
 		}
 	}
 	for (i = 0; i < numrows; i++) {
-		var trow = document.createElement("tr");
+		var trow = $("<tr></tr>");
 		for (var j = 0; j < cols; j++) {
 			//	alert("row " + i + " col " + j);
 			//var tsp = document.createElement("span");
@@ -420,13 +389,6 @@ function getPokemon(ltr) {
 
 }
 
-function ltrPick(e) {
-	if (e.target !== e.currentTarget) {
-		var firstletter = e.target.id;
-		getPokemon(firstletter);
-	}
-	e.stopPropagation();
-}
 
 function azPick() {
 	document.body.style.backgroundImage = "none";
@@ -486,10 +448,7 @@ function initializeCalc() {
 	initPickers();
 }
 
-function initPickers() {
-	document.getElementById("azpicker").style.display = "none";
-	document.getElementById("pokepicker").style.display = "none";
-}
+
 
 
 

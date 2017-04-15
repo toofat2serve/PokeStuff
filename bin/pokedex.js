@@ -1,57 +1,47 @@
 /*eslint-env jquery */
+$.mobile.defaultPageTransition = "slide";
+function initPickers() {
+	$("#azpicker").css("display", "none");
+	$("#pokepicker").css("display", "none");
+}
+
 function initDex() {
 	initPickers();
 	$(".inputSpan").on("click", attachNumPad);
 }
 
-function attachNumPad(event) {
-	try {
-		if (!($("table").hasClass("keypad"))) {
-			var tid = "#" + event.target.id;
-			var np = makeNumpad(tid);
-			var nppos = $.offset(tid);
-			$(tid).after(np));
-			np.offset(nppos.left, nppos.top);
-		} else { 
-			killNumpad();
-		}
-	} catch {
-		alert(err);
+
+function ltrPick(e) {
+	if (e.target !== e.currentTarget) {
+		var firstletter = e.target.id;
+		getPokemon(firstletter);
 	}
+	e.stopPropagation();
 }
 
-function killNumpad() {
-	$("table.keypad").remove();
-}
-function makeNumpad(id) {
-	var numCols = 3;
-	var digits = "1234567890AB";
-	var digit = digits.split("");
-	var t = $("<table></table>").prop("class", "keypad");
-	t.append("<tr></tr");
-	$("body").append(t);
-	digit.forEach(function(value, index) {
-		var tr = $("table.keypad > tbody > tr:last-child");
-		var td = $("<td></td>");
-
-		function makeKey(disp, val) {
-			var a = $('<span>' + disp + '</span>').addClass("keybutton");
-			a.prop("value", val);
-			return a;
+function jqazPick() {
+	document.body.style.backgroundImage = "none";
+	
+	var abcs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var abc = abcs.split("");
+	var tbl = $("#azpicker");
+	var trow;
+	abc.forEach(function(letter, index) {
+		if (index % 5 === 0) {
+			if (index > 0) {
+				tbl.append(trow);
+			}
+			trow = $("<tr></tr>");
 		}
-		if (index < 10) {
-			td.append(makeKey(value, value));
-		} else if (index === 10) {
-			td.append(makeKey("X", index));
-		} else if (index === 11) {
-			td.append(makeKey("&crarr;", index));
-		}
-		tr.append(td);
-		var col = $("table.keypad > tbody > tr:last-child > td").length;
-		if (col === numCols) {
-			t.append("<tr></tr>");
+		var tdiv = $("<td>" + letter + "</td>").prop("id", letter);
+		trow.append(tdiv);
+		if (index === (abc.length - 1)) {
+			tdiv = $("<td></td>");
+			tdiv.colSpan = 4;
+			trow.append(tdiv);
+			tbl.append(trow);
 		}
 	});
-	t.append('<tr><td colspan="' + numCols + '">' + id +'</td></tr>');
-	return t;
+	tbl.on("click", ltrPick);
+	tbl.css("display", "inline-table");
 }
