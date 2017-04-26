@@ -279,29 +279,6 @@ function submitthis() {
 	tk.flash(rename);
 }
 
-
-
-
-
-
-
-
-
-function t_Pokemon(pokeID, pokeName, pokeATT, pokeDEF, pokeSTA, pokeType1, pokeType2, pokeCandyType, eggID, pokeEvoTo, pokeCandyToEvo, pokeDesc) {
-	this.id = pokeID;
-	this.name = pokeName;
-	this.atk = pokeATT;
-	this.def = pokeDEF;
-	this.sta = pokeSTA;
-	this.type1 = pokeType1;
-	this.type2 = pokeType2;
-	this.candyType = pokeCandyType;
-	this.eggID = eggID;
-	this.evoTo = pokeEvoTo;
-	this.candyToEvo = pokeCandyToEvo;
-	this.description = pokeDesc;
-}
-
 function t_Valid(vlvl, vatk, vdef, vsta) {
 	this.lvl = vlvl;
 	this.atk = vatk;
@@ -310,114 +287,9 @@ function t_Valid(vlvl, vatk, vdef, vsta) {
 	this.per = ((this.atk + this.def + this.sta) / 45) * 100;
 }
 
-
-
-
 function imgSRC(id) {
 	var src = "img/sprites/" + id + ".png";
 	return src;
-}
-
-function pokePicked(e) {
-	if (e.target !== e.currentTarget) {
-		var pid = e.target.id;
-		document.getElementById('pokename').value = pid;
-		document.getElementById("calc").style.display = "inline-table";
-		var bgimg = "url(\'" + imgSRC(pid) + "\')";
-		document.getElementById("pokepicker").style.display = "none";
-		document.getElementById("pokepicker").innerHTML = "";
-	}
-	e.stopPropagation();
-}
-
-function getPokemon(ltr) {
-	var pokedex = loadPokedex();
-	var selection = [];
-	var pokePicker = $("#pokepicker");
-	for (var pokemon in pokedex) {
-		var pmn = pokedex[pokemon];
-		if (pmn.name.charAt(0) === ltr.charAt(0)) {
-			selection.push(pmn);
-		}
-	}
-	var cols = 4;
-	var divs = [];
-	for (var p in selection) {
-		var tdiv = $("<td></td>");
-		tdiv.attr("id", selection[p].id);
-		var tfig = $("<figure></figure>");
-		var tpic = $("<img />");
-		tpic.attr("src", imgSRC(selection[p].id));
-		tpic.class = "pokesprite";
-		var tfc = document.createElement("figcaption");
-		tfc.innerText = "#" + selection[p].id + " " + selection[p].name;
-		tfig.id = selection[p].id;
-		tpic.id = selection[p].id;
-		tfc.id = selection[p].id;
-		tfig.append(tpic);
-		tfig.append(tfc);
-		tdiv.append(tfig);
-		divs.push(tdiv);
-	}
-	var evensteven = divs.length % cols === 0;
-	var numfullrows = Math.floor(divs.length / cols);
-	var numrows = evensteven ? numfullrows : numfullrows + 1;
-	if (!evensteven) {
-		var extradivs = (cols * numrows) - divs.length;
-		for (var i = 0; i < extradivs; i++) {
-			var tdiv = document.createElement("td");
-			divs.push(tdiv);
-		}
-	}
-	for (i = 0; i < numrows; i++) {
-		var trow = $("<tr></tr>");
-		for (var j = 0; j < cols; j++) {
-			//	alert("row " + i + " col " + j);
-			//var tsp = document.createElement("span");
-			var ind = (i * cols) + j;
-			//tsp.innerText = "r" + i + " c" + j + " i" + ind;
-			//	divs[ind].append(tsp);
-			trow.append(divs[ind]);
-		}
-		pokePicker.append(trow);
-	}
-	pokePicker = document.querySelector("#pokepicker");
-	pokePicker.addEventListener("click", pokePicked, false);
-	document.getElementById("pokepicker").style.display = "inline-table";
-	document.getElementById("azpicker").style.display = "none";
-	document.getElementById("azpicker").innerHTML = "";
-
-}
-
-
-function azPick() {
-	document.body.style.backgroundImage = "none";
-	var abcs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var abc = abcs.split("");
-	var tbl = document.getElementById("azpicker");
-	for (var letter = 0; letter < 26; letter++) {
-		if (letter % 5 === 0) {
-			if (letter > 0) {
-				tbl.append(trow);
-			}
-			var trow = document.createElement("tr");
-		}
-		var l = abc[letter];
-		var tdiv = document.createElement("td");
-		tdiv.id = l;
-		tdiv.innerText = l;
-		trow.append(tdiv);
-		if (letter === (abc.length - 1)) {
-			var tdiv = document.createElement("td");
-			tdiv.colSpan = 4;
-			trow.append(tdiv);
-			tbl.append(trow);
-		}
-	}
-	azPicker = document.querySelector("#azpicker");
-	azPicker.addEventListener("click", ltrPick, false);
-	document.getElementById("azpicker").style.display = "inline-table";
-	document.getElementById("calc").style.display = "none";
 }
 
 function initializeCalc() {

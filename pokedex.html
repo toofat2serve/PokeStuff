@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" href="styles/styles2.css"> -->
+	<link rel="stylesheet" href="styles/styles2.css">
 	<link rel="stylesheet" href="bin/jquerymobile/jquery.mobile-1.4.5.min.css">
 	<base target="_blank">
 	<script src="bin/jquery/jquery.2.1.4.min.js"></script>
@@ -13,41 +13,97 @@
 	<script src="bin/data.js"></script>
 	<script src="bin/util.js"></script>
 	<script src="bin/pokedex.js"></script>
+	<script src="bin/rewrite.js"></script>
 	<script src="bin/component/keypad.js"></script>
 	<title>Pokédex</title>
 </head>
 
 <body onload="initDex()">
-	
+	<!-- PAGE -->
 	<div data-role="page" id="pokedex">
-<div data-role="header" data-position="fixed">
-		<h1>Pokedex</h1>
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#pokedex" class="ui-btn-active">Pokedex</a></li>
-				<li><a href="#ivcalc">IV</a></li>
-			</ul>
-		</div>
-	</div>
+		<div data-role="header" class="ui-theme-a" data-mini="true">
+			<h1>Pokedex</h1></div>
 		<div role="main" class="ui-content">
+			<span id="nameselect" onclick="jqazPick()">
+					<img class="pokeBall" alt="PokeBall" src="img/pokeball.png" data-transition="pop">
+			</span>
 
-			<table id="pokepicker">
-			</table>
-			<table id="azpicker">
-			</table>
-			<span id="nameselect" onclick="jqazPick()"><h1>CLICK</h1></span>
-			<span class="inputSpan" id="cp" value="0">CP</span>
-			<span class="inputSpan" id="hp" value="0">HP</span>
 		</div>
-
-
 	</div>
-	<div data-role="page" id="ivcalc">
+
+	<!-- PAGE -->
+	<div data-role="page" id="select">
+		<div data-role="header" class="ui-theme-a" data-mini="true">
+			<h1>Select</h1>
+
+		</div>
 		<div role="main" class="ui-content">
+		</div>
+	</div>
+	<!-- PAGE -->
+	<div data-role="page" id="info">
+		<div data-role="panel" id="ivcalc">
+			<form>
+				<fieldset data-role="controlgroup" data-theme="a" data-type="horizontal" data-mini="true">
+					<legend>Stats:</legend>
+					<ul class="vallist">
+						<li><span class="inputSpan" id="cp" value="0">CP</span></li>
+						<li><span class="inputSpan" id="hp" value="0">HP</span></li>
+						<li><span class="inputSpan" id="sd" value="0">SD</span></li>
+					</ul>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-theme="a" data-type="horizontal" data-mini="true">
+					<legend>Overall Appraisal:</legend>
+					<input type="radio" name="radio-choice-t-1" id="radio-choice-t-1a" value="1">
+					<label for="radio-choice-t-1a">Crap</label>
+					<input type="radio" name="radio-choice-t-1" id="radio-choice-t-1b" value="2">
+					<label for="radio-choice-t-1b">Fair</label>
+					<input type="radio" name="radio-choice-t-1" id="radio-choice-t-1c" value="3">
+					<label for="radio-choice-t-1c">Good</label>
+					<input type="radio" name="radio-choice-t-1" id="radio-choice-t-1d" value="4" checked="checked">
+					<label for="radio-choice-t-1d">Best</label>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-theme="a" data-type="horizontal" data-mini="true">
+					<legend>Stat Appraisal:</legend>
+					<input type="radio" name="radio-choice-t-2" id="radio-choice-t-2a" value="1">
+					<label for="radio-choice-t-2a">Crap</label>
+					<input type="radio" name="radio-choice-t-2" id="radio-choice-t-2b" value="2">
+					<label for="radio-choice-t-2b">Fair</label>
+					<input type="radio" name="radio-choice-t-2" id="radio-choice-t-2c" value="3">
+					<label for="radio-choice-t-2c">Good</label>
+					<input type="radio" name="radio-choice-t-2" id="radio-choice-t-2d" value="4" checked="checked">
+					<label for="radio-choice-t-2d">Best</label>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-theme="a" data-type="horizontal" data-mini="true">
+					<legend>High Stat(s):</legend>
+					<input type="checkbox" name="atkhi" id="atkhi">
+					<label for="atkhi">ATK</label>				
+					<input type="checkbox" name="defhi" id="defhi">
+					<label for="defhi">DEF</label>
+					<input type="checkbox" name="stahi" id="stahi">
+					<label for="stahi">STA</label>
+					<input type="button" value="calculate" data-iconpos="notext" data-icon="check">
+				</fieldset>
+				
+			</form>
+		</div>
+		<div data-role="header" class="basetitle ui-theme-a" data-mini="true">
+			<h1></h1>
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#ivcalc">IV Calculator</a></li>
+					<li><a href="#pokedex" onclick="clearSelect()">Home</a></li>
+					<li><a href="#">Combat</a></li>
+				</ul>
+			</div>
+		</div>
+		<div role="main" class="basetable ui-content">
 
 		</div>
-
-
 	</div>
+
+
+
 </body>
 </html>

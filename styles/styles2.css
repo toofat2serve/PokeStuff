@@ -1,14 +1,82 @@
+#ivcalc form fieldset legend {
+	font-size: 8px;
+}
+
+.ui-mobile label, .ui-controlgroup-label {
+	margin: 0;
+}
+
+.vallist {
+	list-style: none;
+	float: left;
+	padding: 0;
+}
+
+.vallist li {
+	display: inline;
+}
+
+.pokebasetable {
+	width: 100%;
+	table-layout: fixed;
+	display: inline-table;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+#azpicker {
+	width: 100%;
+	height: 400px;
+	margin: 0 auto;
+	text-align: center;
+	display: inline-table;
+	table-layout: fixed;
+}
+
+.pokepicker {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	display: inline-table;
+	table-layout: fixed;
+	color: white;
+}
+
+.pokepicker figure,
+.poketype, .pokename, .pokeindex, .stat {
+	margin: 0;
+	text-shadow: 1px 0 5px #000000, 0 1px 5px #000000, -1px 0 5px #000000, 0 -1px 5px #000000;
+	font-weight: bold;
+}
+.poketype {
+		font-size: .8em;
+}
+
+.pokename, .pokeindex, .stat {
+	color: white;
+}
+
+.pokepicker figure {
+	font-size: .6em;
+}
+
+.pokeBall {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+}
+
 .inputSpan {
 	display: inline-block;
 	box-sizing: border-box;
-	min-width: 6em;
+	min-width: 5em;
 	background-color: #a9e4f7;
 	border: 1px solid black;
 	height: 1.2em;
-	margin: 0 3em;
+	margin: 0 auto;
 	text-align: center;
 	vertical-align: middle;
-	
 }
 
 .keypad {
@@ -20,6 +88,7 @@
 	border: 2px solid black;
 	margin: 3px;
 	box-sizing: border-box;
+	z-index: 100;
 }
 
 .keybutton:hover {
@@ -49,4 +118,87 @@
 	background: -webkit-radial-gradient(center, ellipse cover, #a9e4f7 0%, #0fb4e7 100%);
 	background: radial-gradient(ellipse at center, #a9e4f7 0%, #0fb4e7 100%);
 	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=1);
+}
+
+/* .ui-content,
+.ui-collapsible-content,
+.ui-panel,
+body {
+	background: #f0f9ff;
+	background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+	background: -webkit-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+	background: linear-gradient(to bottom, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff', GradientType=0);
+}
+*/
+.Normal {
+	color: #A8A77A;
+}
+
+.Fighting {
+	color: #C22E28;
+}
+
+.Flying {
+	color: #A98FF3;
+}
+
+.Poison {
+	color: #A33EA1;
+}
+
+.Ground {
+	color: #E2BF65;
+}
+
+.Rock {
+	color: #B6A136;
+}
+
+.Bug {
+	color: #A6B91A;
+}
+
+.Ghost {
+	color: #735797;
+}
+
+.Steel {
+	color: #B7B7CE;
+}
+
+.Fire {
+	color: #EE8130;
+}
+
+.Water {
+	color: #6390F0;
+}
+
+.Grass {
+	color: #7AC74C;
+}
+
+.Electric {
+	color: #F7D02C;
+}
+
+.Psychic {
+	color: #F95587;
+}
+
+.Ice {
+	color: #96D9D6;
+}
+
+.Dragon {
+	color: #6F35FC;
+}
+
+.Fairy {
+	color: #D685AD;
+}
+
+.Dark {
+	color: #705746;
 }
